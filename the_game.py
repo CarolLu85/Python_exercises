@@ -1,11 +1,6 @@
 from art import logo
 import random
 import os
-# print("Welcome to the YiYi's game")
-# print(logo)
-# ACTUAL_NUMBER = random.randint(1,100)
-# print("I'm thinking of a number between 1 and 100")
-# end_of_game = False
 
 def difficulty():
   game_level = input("please choose a game level, type 'easy' or 'hard'\n")
