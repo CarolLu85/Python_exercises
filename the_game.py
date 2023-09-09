@@ -3,11 +3,14 @@ import random
 import os
 
 def difficulty():
-  game_level = input("please choose a game level, type 'easy' or 'hard'\n")
-  if game_level == "easy":
-    return 10
-  elif game_level == "hard":
-    return 5  
+  while True:
+    game_level = input("please choose a game level, type 'easy' or 'hard'\n")
+    if game_level == "easy":
+      return 10
+    elif game_level == "hard":
+      return 5
+    else:
+      print("invalid input, please type again.")
 
 def play_game(turns):
   while turns > 0:
