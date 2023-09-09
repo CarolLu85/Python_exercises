@@ -21,7 +21,7 @@ def play_game(turns):
     if guess > ACTUAL_NUMBER:
       print("too high, guess again")
     elif guess < ACTUAL_NUMBER:
-      print("too low, guess again")s
+      print("too low, guess again")
     else:
       print(f"you got the right number, the number is {ACTUAL_NUMBER}")
     turns -= 1
