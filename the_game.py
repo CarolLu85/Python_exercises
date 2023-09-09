@@ -3,6 +3,7 @@ import random
 import os
 
 def difficulty():
+  """set the difficulty level of the game"""
   while True:
     game_level = input("please choose a game level, type 'easy' or 'hard'\n")
     if game_level == "easy":
@@ -13,13 +14,14 @@ def difficulty():
       print("invalid input, please type again.")
 
 def play_game(turns):
+  """checks answer against guess. Returns the number of turns remaining."""
   while turns > 0:
     guess = int(input("Please make a guess:"))
     print("guess")
     if guess > ACTUAL_NUMBER:
       print("too high, guess again")
     elif guess < ACTUAL_NUMBER:
-      print("too low, guess again")
+      print("too low, guess again")s
     else:
       print(f"you got the right number, the number is {ACTUAL_NUMBER}")
     turns -= 1
