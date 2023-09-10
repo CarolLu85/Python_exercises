@@ -9,17 +9,20 @@ player_a = "A"
 player_b = "B"
 points = 0
 def clear_console():
+    """ to clear the screen"""
     if os.name == "nt":
         os.system("cls")
     else:
         os.system("clear")
       
 def fetch_data():
+    """ to generate a random number, and return the number"""
     number = 0
     number = random.randint(0,len(data)-1)
     return number
     
 def comparison(a,b):
+    """compare the number of follower, and return a string to be used to check the user's answer"""
     count_a = data[a]["follower_count"]
     count_b = data[b]["follower_count"]
     if count_a > count_b:
@@ -33,15 +36,15 @@ while True:
     print(logo)
     player_a = "Compare A: " + f"{data[index_a]['name']}, {data[index_a]['description']}, from {data[index_a]['country']}"
     print(player_a)
-    print(data[index_a]["follower_count"])    
+    # print(data[index_a]["follower_count"])    
     print(vs)
     index_b = fetch_data()
     player_b = "Compare B: " + f"{data[index_b]['name']}, {data[index_b]['description']}, from {data[index_b]['country']}"
     print(player_b)
-    print(data[index_b]["follower_count"])
+    # print(data[index_b]["follower_count"])
 
     right_answer = comparison(index_a,index_b)
-    print(right_answer)
+    # print(right_answer)
     guess = input("Who gets more followers? A or B\n")
     if guess == right_answer:
         points = points + 1
