@@ -24,6 +24,7 @@ def play_game(turns):
       print("too low, guess again")
     else:
       print(f"you got the right number, the number is {ACTUAL_NUMBER}")
+      return
     turns -= 1
     print(f"You have {turns} times left")
   print(f"The number is {ACTUAL_NUMBER}")
