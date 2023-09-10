@@ -2,59 +2,55 @@ import random
 from art_higher_lower import logo
 from data_higher_lower import data
 from art_higher_lower import vs
-# print(len(data))
-# print(data[0]["name"])
-# a = fetch_data()
-# print(f"Compare A: {a}")
+import os
+print(logo)
 index_a = 0
 index_b = 0
 player_a = "A"
 player_b = "B"
-score = 0
+points = 0
+def clear_console():
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        os.system("clear")
+      
 def fetch_data():
     number = 0
     number = random.randint(0,len(data)-1)
     return number
-    # return f"{data[index]['name']}, {data[index]['description']}, from {data[index]['country']}"
     
-def comparison():
-    if data[index_a]["follower_count"] > data[index_b]["follower_count"]:
+def comparison(a,b):
+    count_a = data[a]["follower_count"]
+    count_b = data[b]["follower_count"]
+    if count_a > count_b:
         return "A"
-    elif data[index_a]["follower_count"] > data[index_b]["follower_count"]:
+    elif count_a < count_b:
         return "B"
 
-def check_answer():
-    global player_a
-    global player_b
-    global index_a
-    global index_b 
-    right_answer = comparison()
-    points = 0
-    while True:
-        guess = input("Who gets more followers? A or B\n").lower()
-        if guess == right_answer:
-            points = points + 1
-            print(f"You're right! Current score: {points}")
-            player_a = player_b
-            play_b =""
-            index_b = 0
-        else:
-            print(f"Sorry, you lose. Your final score is {points}")
-            return
-
-
-def play_game():
-    global player_a
-    global player_b
-    global index_a
-    global index_b 
-    print(logo)
-    index_a = fetch_data()
+index_a = fetch_data()
+while True:
+    # clear_console()
     player_a = "Compare A: " + f"{data[index_a]['name']}, {data[index_a]['description']}, from {data[index_a]['country']}"
     print(player_a)
+    print(data[index_a]["follower_count"])    
     print(vs)
     index_b = fetch_data()
     player_b = "Compare B: " + f"{data[index_b]['name']}, {data[index_b]['description']}, from {data[index_b]['country']}"
     print(player_b)
-    score = check_answer()
+    print(data[index_b]["follower_count"])
+
+    right_answer = comparison(index_a,index_b)
+    print(right_answer)
+    guess = input("Who gets more followers? A or B\n")
+    if guess == right_answer:
+        points = points + 1
+        print(f"You're right! Current score: {points}")
+        index_a = index_b
+    else:
+        print(f"Sorry, you lose. Your final score is {points}")
+        end_of_game = True
+        break
+
+
 
