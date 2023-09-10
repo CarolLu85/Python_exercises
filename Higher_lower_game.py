@@ -3,7 +3,6 @@ from art_higher_lower import logo
 from data_higher_lower import data
 from art_higher_lower import vs
 import os
-print(logo)
 index_a = 0
 index_b = 0
 player_a = "A"
@@ -30,7 +29,8 @@ def comparison(a,b):
 
 index_a = fetch_data()
 while True:
-    # clear_console()
+    clear_console()
+    print(logo)
     player_a = "Compare A: " + f"{data[index_a]['name']}, {data[index_a]['description']}, from {data[index_a]['country']}"
     print(player_a)
     print(data[index_a]["follower_count"])    
