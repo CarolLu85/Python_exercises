@@ -43,3 +43,4 @@ while not end_of_game:
     end_of_game = True
   else:
     os.system('cls')
+# testing on pycharm
