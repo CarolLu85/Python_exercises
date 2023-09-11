@@ -45,5 +45,7 @@ while True:
         # check the current resources again after deduction
         for a in MENU[coffee_choice]["ingredients"]:
             resources[a] = resources[a] - MENU[coffee_choice]["ingredients"][a]
-            # print(resources[a])
+            print(resources[a])
+            print(f"Profit: {MENU[coffee_choice]['cost']}")
+
 
