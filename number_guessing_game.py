@@ -41,5 +41,5 @@ while not end_of_game:
   if ask_again == "n":
     print("The End")
     end_of_game = True
-
-# testing on pycharm
+  else:
+    os.system('cls')
