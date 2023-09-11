@@ -2,6 +2,7 @@ from menu_coffee_machine import MENU
 from menu_coffee_machine import resources
 from menu_coffee_machine import coins
 
+
 def resources_checking(choice):
     """checking if there are enough resources in the machine to make  a chosen coffee"""
     for i in MENU[choice]["ingredients"]:
@@ -28,8 +29,7 @@ def enough_money(original_cost, money_putin):
     if original_cost > money_putin:
         print("Sorry, that's not enough money. Money Refunded")
         return "sorry"
-    return print(f"Here is ${original_cost - money_putin} in change. \n Here is your {coffee_choice} ☕. Enjoy!")
-
+    return print(f"Here is ${original_cost - money_putin} in change. \nHere is your {coffee_choice} ☕. Enjoy!")
 
 
 while True:
@@ -40,9 +40,10 @@ while True:
     print("Please insert coins.")
     money_putin = money_checking()
     make_coffee = enough_money(MENU[coffee_choice]["cost"], money_putin)
-    # check the current resources again after deduction
+
     if result == "ok" and make_coffee != "sorry":
+        # check the current resources again after deduction
         for a in MENU[coffee_choice]["ingredients"]:
             resources[a] = resources[a] - MENU[coffee_choice]["ingredients"][a]
-            print(resources[a])
+            # print(resources[a])
 
