@@ -10,6 +10,7 @@ def resources_checking(choice):
         if MENU[choice]["ingredients"][i] > resources[i]:
             print(f"Sorry, there is no enough {i}")
             return
+    return "ok"
 
 
 def money_checking():
@@ -26,23 +27,22 @@ def enough_money(original_cost, money_putin):
     """checking if customers have put in enough money, if so, make the coffee, otherwise return the money to customers"""
     if original_cost > money_putin:
         print("Sorry, that's not enough money. Money Refunded")
-        return
-    else:
-        print(f"Here is ${original_cost - money_putin} in change.")
-        print("Here is your {coffee_choice} ☕. Enjoy!")
+        return "sorry"
+    return print(f"Here is ${original_cost - money_putin} in change. \n Here is your {coffee_choice} ☕. Enjoy!")
+
 
 
 while True:
     coffee_choice = input("What would you like?(espresso/latte/cappuccino): \n")
     if coffee_choice == "":
         break
-    resources_checking(coffee_choice)
+    result = resources_checking(coffee_choice)
     print("Please insert coins.")
     money_putin = money_checking()
-    enough_money(MENU[coffee_choice]["cost"], money_putin)
+    make_coffee = enough_money(MENU[coffee_choice]["cost"], money_putin)
     # check the current resources again after deduction
-
-    for a in MENU[coffee_choice]["ingredients"]:
-        resources[a] = resources[a] - MENU[coffee_choice]["ingredients"][a]
-        print(resources[a])
+    if result == "ok" and make_coffee != "sorry":
+        for a in MENU[coffee_choice]["ingredients"]:
+            resources[a] = resources[a] - MENU[coffee_choice]["ingredients"][a]
+            print(resources[a])
 
